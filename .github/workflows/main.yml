@@ -53,16 +53,9 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
               cd ~/app/node_deploy
+              yarn
               ./node_modules/.bin/typeorm migration:run
-              
-      - name: run migrations on digital ocean
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{secrets.SSH_USER}}
-          key: ${{ secrets.SSH_KEY }}
-          port: ${{ secrets.SSH_PORT }}
-          script: pm2 restart gobarberapi
-    
+              pm2 restart gobarberapi
+            
 
     
