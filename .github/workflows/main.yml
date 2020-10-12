@@ -52,7 +52,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-              cd ~/app/node_deploy
+              cd ~/app/node-deploy
               yarn
               ./node_modules/.bin/typeorm migration:run
               pm2 restart gobarberapi
